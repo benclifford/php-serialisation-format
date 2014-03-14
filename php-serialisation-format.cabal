@@ -1,0 +1,18 @@
+Name: php-serialisation-format
+Version: 0.1.1
+Description: Parse PHP serialised data
+License: BSD3
+Author: Ben Clifford <benc@cqx.ltd.uk>
+Build-Type: Simple
+Cabal-Version: >=1.6
+
+Executable Main
+  Main-is: Data/PHP.hs
+  hs-source-dirs: src
+  build-depends: base, parsec
+  ghc-options: -main-is Data.PHP
+
+Library
+  Build-depends: base, parsec
+  Exposed-Modules: Data.PHP
+  hs-source-dirs: src
