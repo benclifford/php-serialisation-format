@@ -7,10 +7,12 @@ module Data.PHP where
   import Control.Monad
   import Text.ParserCombinators.Parsec hiding ( (<|>) , many )
 
+  -- | Should Eq compare PHP arrays regardless of order? Is there
+  -- equality behaviour to inherit from PHP?
   data PHPData =
       PHPArray [(PHPData, PHPData)]
     | PHPString String
-    deriving Show
+    deriving (Show, Eq)
 
   phpdata =
         (phparray <?> "PHP array")
@@ -52,7 +54,7 @@ module Data.PHP where
   testStr2 = "a:2:{s:7:\"booking\";a:1:{s:15:\"booking_comment\";s:0:\"\";}s:7:\"gateway\";s:6:\"realex\";}"
   testStr3 = "s:5:\"hello\";"
 
-  main = do
+  phpTestMain = do
     test testStr1
     test testStr2
     test testStr3

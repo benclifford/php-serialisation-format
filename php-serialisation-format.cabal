@@ -1,5 +1,5 @@
 Name: php-serialisation-format
-Version: 0.1.1
+Version: 0.1.4
 Description: Parse PHP serialised data
 License: BSD3
 Author: Ben Clifford <benc@cqx.ltd.uk>
@@ -10,7 +10,7 @@ Executable Main
   Main-is: Data/PHP.hs
   hs-source-dirs: src
   build-depends: base, parsec
-  ghc-options: -main-is Data.PHP
+  ghc-options: -main-is Data.PHP.phpTestMain
 
 Library
   Build-depends: base, parsec
