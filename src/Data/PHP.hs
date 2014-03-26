@@ -12,11 +12,13 @@ module Data.PHP where
   data PHPData =
       PHPArray [(PHPData, PHPData)]
     | PHPString String
+    | PHPInteger Integer
     deriving (Show, Eq)
 
   phpdata =
         (phparray <?> "PHP array")
     <|> (phpstring <?> "PHP string")
+    <|> (phpinteger <?> "PHP integer")
 
   phpstring = do
     char 's'
@@ -43,9 +45,17 @@ module Data.PHP where
 
     return $ PHPArray v
 
+  phpinteger = do
+    char 'i'
+    char ':'
+    v <- integer
+    char ';'
+    return $ PHPInteger v
+
+  integer :: (Num n, Read n) => Parser n
   integer = do
     digits <- many $ oneOf "0123456789"
-    return (read digits :: Int)
+    return $ read digits
 
   parsePHP :: String -> Either ParseError PHPData
   parsePHP s = parse (phpdata <* eof) "(unknown)" s
