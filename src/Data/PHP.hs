@@ -63,11 +63,13 @@ module Data.PHP where
   testStr1 = "a:0:{}"
   testStr2 = "a:2:{s:7:\"booking\";a:1:{s:15:\"booking_comment\";s:0:\"\";}s:7:\"gateway\";s:6:\"realex\";}"
   testStr3 = "s:5:\"hello\";"
+  testStrInt = "a:3:{i:0;s:4:\"1364\";i:1;s:4:\"1385\";i:2;s:4:\"1505\";}"
 
   phpTestMain = do
     test testStr1
     test testStr2
     test testStr3
+    test testStrInt
 
   test s = do
     putStrLn s
